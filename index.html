@@ -1,0 +1,498 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>AUTOWAREHOUSE | Almacén Automatizado</title>
+
+  <meta name="description"
+        content="Portafolio académico de AUTOWAREHOUSE,
+        un proyecto de almacén inteligente con nueve compartimentos.">
+
+  <style>
+    /* 1. CONFIGURACIÓN GENERAL */
+    :root {
+      --fondo: #0b1120;
+      --panel: #111b2e;
+      --borde: #26364d;
+      --texto: #e8eef8;
+      --suave: #9aabc2;
+      --acento: #48d6b5;
+      --azul: #72a7ff;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--fondo);
+      color: var(--texto);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* 2. MENÚ LATERAL */
+    .sidebar {
+      width: 250px;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 30px 22px;
+      background: #0e1728;
+      border-right: 1px solid var(--borde);
+      overflow-y: auto;
+    }
+
+    .logo {
+      color: var(--acento);
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .sublogo {
+      color: var(--suave);
+      font-size: 12px;
+      margin-bottom: 35px;
+    }
+
+    .menu-titulo {
+      color: var(--suave);
+      font-size: 11px;
+      letter-spacing: 2px;
+      margin: 25px 0 10px;
+    }
+
+    .sidebar nav a {
+      display: block;
+      padding: 10px 12px;
+      margin: 5px 0;
+      border-radius: 8px;
+      color: #bdc9dc;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .sidebar nav a:hover {
+      background: #1c2b40;
+      color: var(--acento);
+    }
+
+    /* 3. CONTENIDO PRINCIPAL */
+    main {
+      margin-left: 250px;
+      padding: 45px 7%;
+      max-width: 1450px;
+    }
+
+    .etiqueta {
+      color: var(--acento);
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1.1;
+      margin: 20px 0;
+    }
+
+    h1 span {
+      color: var(--acento);
+    }
+
+    h2 {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    h3 {
+      margin-top: 0;
+    }
+
+    .descripcion {
+      color: var(--suave);
+      max-width: 720px;
+      font-size: 17px;
+    }
+
+    .botones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 30px 0;
+    }
+
+    .boton {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 8px;
+      background: var(--acento);
+      color: #07131b;
+      font-weight: bold;
+    }
+
+    .boton-secundario {
+      background: transparent;
+      border: 1px solid var(--borde);
+      color: var(--texto);
+    }
+
+    /* 4. TARJETAS */
+    .tarjetas {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 25px;
+    }
+
+    .tarjeta {
+      background: var(--panel);
+      border: 1px solid var(--borde);
+      padding: 22px;
+      border-radius: 14px;
+    }
+
+    .numero {
+      color: var(--acento);
+      font-size: 27px;
+      font-weight: bold;
+    }
+
+    .tarjeta p,
+    .contenido p,
+    .contenido li {
+      color: var(--suave);
+    }
+
+    /* 5. SECCIONES */
+    section {
+      padding: 65px 0;
+      border-bottom: 1px solid var(--borde);
+      scroll-margin-top: 25px;
+    }
+
+    .contenido {
+      background: var(--panel);
+      border: 1px solid var(--borde);
+      border-radius: 14px;
+      padding: 25px;
+      margin-top: 20px;
+    }
+
+    .contenido li {
+      margin-bottom: 10px;
+    }
+
+    .semana {
+      border-left: 2px solid var(--acento);
+      padding: 4px 0 15px 20px;
+      margin-left: 8px;
+    }
+
+    .semana strong {
+      color: var(--texto);
+    }
+
+    .aviso {
+      color: var(--suave);
+      font-size: 13px;
+      margin-top: 20px;
+    }
+
+    footer {
+      padding: 35px 0;
+      color: var(--suave);
+      font-size: 13px;
+    }
+
+    /* 6. ADAPTACIÓN A CELULARES */
+    @media (max-width: 900px) {
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 20px;
+      }
+
+      .sublogo {
+        margin-bottom: 15px;
+      }
+
+      .menu-titulo {
+        margin-top: 12px;
+      }
+
+      .sidebar nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+
+      .sidebar nav a {
+        margin: 0;
+      }
+
+      main {
+        margin-left: 0;
+        padding: 30px 6%;
+      }
+
+      .tarjetas {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- MENÚ DE NAVEGACIÓN -->
+  <aside class="sidebar">
+    <div class="logo">AUTO<span>WAREHOUSE</span></div>
+    <div class="sublogo">Industrial Automation · 2026</div>
+
+    <div class="menu-titulo">PORTAFOLIO</div>
+
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#proyecto">Sobre el proyecto</a>
+      <a href="#sistema">Sistema técnico</a>
+      <a href="#documentacion">Documentación</a>
+      <a href="#avances">Avances semanales</a>
+      <a href="#equipo">Equipo de trabajo</a>
+    </nav>
+  </aside>
+
+  <!-- CONTENIDO DE LA PÁGINA -->
+  <main>
+
+    <!-- INICIO -->
+    <section id="inicio">
+      <div class="etiqueta">Proyecto académico · 2026</div>
+
+      <h1>
+        AUTOWAREHOUSE<br>
+        <span>Almacén Automatizado</span>
+      </h1>
+
+      <p class="descripcion">
+        Desarrollo de un sistema inteligente para localizar materiales,
+        identificar su compartimento y facilitar el control del inventario
+        mediante electrónica y automatización industrial.
+      </p>
+
+      <div class="botones">
+        <a class="boton" href="#proyecto">Explorar proyecto ↗</a>
+        <a class="boton boton-secundario"
+           href="#documentacion">Ver documentación</a>
+      </div>
+
+      <div class="tarjetas">
+        <article class="tarjeta">
+          <div class="numero">09</div>
+          <h3>Compartimentos</h3>
+          <p>Estante inteligente organizado en nueve casillas.</p>
+        </article>
+
+        <article class="tarjeta">
+          <div class="numero">ESP32</div>
+          <h3>Control electrónico</h3>
+          <p>Unidad de control para gestionar las funciones del sistema.</p>
+        </article>
+
+        <article class="tarjeta">
+          <div class="numero">10</div>
+          <h3>Semanas</h3>
+          <p>Periodo previsto para desarrollar y documentar el proyecto.</p>
+        </article>
+      </div>
+
+      <p class="aviso">
+        Nota: las características mostradas describen el alcance previsto.
+        Actualiza esta página conforme las funciones se implementen y prueben.
+      </p>
+    </section>
+
+    <!-- SOBRE EL PROYECTO -->
+    <section id="proyecto">
+      <div class="etiqueta">01 / Descripción</div>
+      <h2>Sobre el proyecto</h2>
+
+      <div class="contenido">
+        <h3>Problema identificado</h3>
+        <p>
+          En un almacén, un trabajador nuevo puede tener dificultades para
+          encontrar rápidamente los materiales cuando no conoce su ubicación.
+          Esto puede generar demoras y errores durante la búsqueda.
+        </p>
+
+        <h3>Propuesta de solución</h3>
+        <p>
+          AUTOWAREHOUSE propone un estante de nueve compartimentos con
+          identificación de ubicaciones, señalización luminosa y un sistema
+          electrónico que facilite la consulta de materiales.
+        </p>
+
+        <h3>Objetivo general</h3>
+        <p>
+          Diseñar e implementar un prototipo de almacén inteligente que
+          facilite la localización de materiales y permita explorar
+          funciones de supervisión del inventario.
+        </p>
+      </div>
+    </section>
+
+    <!-- SISTEMA TÉCNICO -->
+    <section id="sistema">
+      <div class="etiqueta">02 / Ingeniería</div>
+      <h2>Diseño e implementación</h2>
+
+      <div class="tarjetas">
+        <article class="tarjeta">
+          <h3>Controlador</h3>
+          <p>
+            ESP32: procesa las consultas y coordina las señales de
+            los elementos electrónicos, según la programación.
+          </p>
+        </article>
+
+        <article class="tarjeta">
+          <h3>Señalización LED</h3>
+          <p>
+            Una luz permite identificar visualmente el compartimento
+            asociado al material solicitado.
+          </p>
+        </article>
+
+        <article class="tarjeta">
+          <h3>Pesaje e inventario</h3>
+          <p>
+            Los sensores de peso WS-01 a WS-09, junto con sus módulos HX711,
+            pueden utilizarse para evaluar cambios de peso en las casillas.
+          </p>
+        </article>
+      </div>
+
+      <div class="contenido">
+        <h3>Secuencia de funcionamiento prevista</h3>
+        <ol>
+          <li>Inicializar el controlador y los periféricos.</li>
+          <li>Esperar la consulta del usuario.</li>
+          <li>Identificar el material solicitado.</li>
+          <li>Consultar su ubicación registrada.</li>
+          <li>Activar la señal luminosa de la casilla correspondiente.</li>
+          <li>Mostrar o comunicar la ubicación y finalizar la señalización.</li>
+          <li>Volver al estado de espera.</li>
+        </ol>
+        <p>
+          Si el material no está registrado, el sistema debe informar
+          que no se encontró y volver a esperar una nueva consulta.
+        </p>
+      </div>
+    </section>
+
+    <!-- DOCUMENTACIÓN -->
+    <section id="documentacion">
+      <div class="etiqueta">03 / Documentación</div>
+      <h2>Documentación técnica</h2>
+
+      <div class="contenido">
+        <h3>Diagramas y análisis</h3>
+        <p>
+          Esta sección reúne los documentos utilizados para diseñar,
+          analizar y explicar el sistema automatizado.
+        </p>
+
+        <ul>
+          <li>PFD: diagrama de flujo del proceso.</li>
+          <li>P&ID: identificación de instrumentos y señales del sistema.</li>
+          <li>Filosofía de control: descripción de la lógica de funcionamiento.</li>
+          <li>HAZOP: análisis de desviaciones y riesgos aplicables al diseño.</li>
+          <li>Lista de materiales, presupuesto y conexiones eléctricas.</li>
+        </ul>
+
+        <p>
+          Próximamente se incorporarán los diagramas, fotografías y
+          archivos correspondientes.
+        </p>
+      </div>
+    </section>
+
+    <!-- AVANCES -->
+    <section id="avances">
+      <div class="etiqueta">04 / Desarrollo</div>
+      <h2>Avances semanales</h2>
+
+      <div class="contenido">
+        <div class="semana">
+          <strong>Semana 01 · Planificación</strong>
+          <p>Definición del problema, objetivos y alcance.</p>
+        </div>
+
+        <div class="semana">
+          <strong>Semana 02 · Diseño</strong>
+          <p>Diseño inicial del estante y distribución de las casillas.</p>
+        </div>
+
+        <div class="semana">
+          <strong>Semana 03 · Electrónica</strong>
+          <p>Selección de componentes y elaboración de conexiones.</p>
+        </div>
+
+        <div class="semana">
+          <strong>Semanas 04–09 · Implementación</strong>
+          <p>Programación, integración y pruebas progresivas.</p>
+        </div>
+
+        <div class="semana">
+          <strong>Semana 10 · Validación</strong>
+          <p>Pruebas finales, resultados y presentación del prototipo.</p>
+        </div>
+
+        <p class="aviso">
+          Cronograma referencial. Reemplázalo por las actividades
+          y evidencias reales de cada semana.
+        </p>
+      </div>
+    </section>
+
+    <!-- EQUIPO -->
+    <section id="equipo">
+      <div class="etiqueta">05 / Colaboración</div>
+      <h2>Equipo de trabajo</h2>
+
+      <div class="contenido">
+        <p><strong>Proyecto:</strong> AUTOWAREHOUSE – Almacén Automatizado</p>
+        <p><strong>Integrantes:</strong></p>
+        <ul>
+          <li>Muñoz Cueva, Deyver Dereck</li>
+          <li>Castañeda Cansaya, Ana Karina</li>
+          <li>Pocohuanca Apaza, Yonathan Yodi</li>
+          <li>Sosa Tala, Evelyn Samitra</li>
+        </ul>
+        <p><strong>Área:</strong> Electrónica y Automatización Industrial</p>
+      </div>
+    </section>
+
+    <footer>
+      AUTOWAREHOUSE · Portafolio académico 2026<br>
+      Documentación del diseño y desarrollo del prototipo.
+    </footer>
+
+  </main>
+</body>
+</html>
